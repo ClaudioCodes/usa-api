@@ -6,7 +6,7 @@ require('dotenv').config()
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
-    dbName = 'states'
+    dbName = 'usa'
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
@@ -21,14 +21,17 @@ app.use(express.json())
 
 
 app.get('/',(request, response)=>{
-    response.render('index.ejs')
+    db.collection('states').find().toArray()
+    .then(data => {
+        response.render('index.ejs', { info: data })
+    })
     .catch(error => console.error(error))
 })
 
 app.post('/searchStates',(request, response)=>{
-    db.collection('states').find({name: request.body.name}).toArray()
+    db.collection('states').find().toArray()
     .then(data => {
-        response.render('index.ejs', { info: data })
+        response.render('search.ejs', { info: data })
     })
     .catch(error => console.error(error))
 })

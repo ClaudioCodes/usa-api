@@ -23,10 +23,25 @@
 
     <h2>Search for a state</h2>
     <form action="/searchStates" method="POST">
-        <input type="text" placeholder="State Name" id="stateName">
+        <input type="text" placeholder="State Name" name="stateName">
         <input type="submit" name="stateSubmit">
     </form>
-    
+
+    <ul class="states">
+    <% for (const state in info[0]) {%>
+        <li class="state">
+            <h3>Name</h3>
+            <span><%= info[0][state].name %></span>
+            <h3>Capital</h3>
+            <span><%= info[0][state].capital %></span>
+            <h3>Lat</h3>
+            <span><%= info[0][state].lat %></span>
+            <h3>Long</h3>
+            <span><%= info[0][state].long %></span>
+        </li>
+    <% } %>
+    </ul>
+
     <script src='js/main.js'></script>
 </body>
 </html>
