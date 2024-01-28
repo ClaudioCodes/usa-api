@@ -29,7 +29,8 @@
 
     <ul class="states">
 
-    <%delete info[0]['_id']%>     
+    <%delete info[0]['_id']%> 
+    <%let stateFound = false%>     
     <%for (const state in info[0]){%>
         <% if (info[0][state].name.toLowerCase() === info2.stateName.toLowerCase()) { %>
             <li class="state">
@@ -42,10 +43,14 @@
                 <h3>Long</h3>
                 <span><%= info[0][state].long %></span>
             </li>
-            <!-- <h1>State Not Found</h1> -->
-        <%}%>
+            <%stateFound = true%> 
+        <% } %> 
     <% } %>
+    
+    <%if (!stateFound) { %>
+        <h1>State Not Found</h1>
+    <%}%>     
+    
     </ul>
-
 </body>
 </html>
