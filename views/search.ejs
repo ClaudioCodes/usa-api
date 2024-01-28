@@ -28,11 +28,10 @@
     </form>
 
     <ul class="states">
+
+    <%delete info[0]['_id']%>     
     <%for (const state in info[0]){%>
-        <% console.log("test") %>
-        <% console.log(`${state.name}`) %>
-        <% console.log(`${stateName.name}`) %>
-        <% if (state.name === stateName.name) { %>
+        <% if (info[0][state].name.toLowerCase() === info2.stateName.toLowerCase()) { %>
             <li class="state">
                 <h3>Name</h3>
                 <span><%= info[0][state].name %></span>
@@ -43,8 +42,7 @@
                 <h3>Long</h3>
                 <span><%= info[0][state].long %></span>
             </li>
-        <%} else{%>
-            <h1>State Not Found</h1>
+            <!-- <h1>State Not Found</h1> -->
         <%}%>
     <% } %>
     </ul>
