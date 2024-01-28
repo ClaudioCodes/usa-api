@@ -29,9 +29,11 @@ app.get('/',(request, response)=>{
 })
 
 app.post('/searchStates',(request, response)=>{
+    console.log(request.body.stateName)
     db.collection('states').find().toArray()
     .then(data => {
-        response.render('search.ejs', { info: data })
+        response.render('search.ejs', { info: data, stateName: request.body.stateName })
+        console.log({ info: data, stateName: {name: request.body.stateName} })
     })
     .catch(error => console.error(error))
 })

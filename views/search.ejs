@@ -28,20 +28,26 @@
     </form>
 
     <ul class="states">
-    <% for (const state in info[0]) {%>
-        <li class="state">
-            <h3>Name</h3>
-            <span><%= info[0][state].name %></span>
-            <h3>Capital</h3>
-            <span><%= info[0][state].capital %></span>
-            <h3>Lat</h3>
-            <span><%= info[0][state].lat %></span>
-            <h3>Long</h3>
-            <span><%= info[0][state].long %></span>
-        </li>
+    <%for (const state in info[0]){%>
+        <% console.log("test") %>
+        <% console.log(`${state.name}`) %>
+        <% console.log(`${stateName.name}`) %>
+        <% if (state.name === stateName.name) { %>
+            <li class="state">
+                <h3>Name</h3>
+                <span><%= info[0][state].name %></span>
+                <h3>Capital</h3>
+                <span><%= info[0][state].capital %></span>
+                <h3>Lat</h3>
+                <span><%= info[0][state].lat %></span>
+                <h3>Long</h3>
+                <span><%= info[0][state].long %></span>
+            </li>
+        <%} else{%>
+            <h1>State Not Found</h1>
+        <%}%>
     <% } %>
     </ul>
 
-    <script src='js/main.js'></script>
 </body>
 </html>
