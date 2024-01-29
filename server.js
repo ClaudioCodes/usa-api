@@ -26,8 +26,9 @@ app.get('/',(request, response)=>{
 })
 
 app.post('/searchStates',(request, response)=>{
-    db.collection('states').find().toArray()
+    db.collection('states').find({}, {projection:{ _id: 0 }}).toArray()
     .then(data => {
+        // delete data['_id']
         response.render('search.ejs', { info: data, info2: {stateName: request.body.stateName} })
     })
     .catch(error => console.error(error))

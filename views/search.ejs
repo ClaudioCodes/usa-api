@@ -28,8 +28,6 @@
     </form>
 
     <ul class="states">
-
-    <%delete info[0]['_id']%> 
     <%let stateFound = false%>     
     <%for (const state in info[0]){%>
         <% if (info[0][state].name.toLowerCase() === info2.stateName.toLowerCase()) { %>
